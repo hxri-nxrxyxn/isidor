@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Isidor - Smart Home Automation & Consumer Robotics. From IoT-enabled switches to advanced robotic arms, we bring intelligent efficiency to your living space. Based in India.">
+    <meta name="keywords" content="Isidor, Home Automation India, IoT Switches, Smart Home Products, Consumer Robotics, IoT Motors, Robotic Arms, Smart Living">
+    <meta name="author" content="Andrewjos Sebastian">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://isidor.co.in/"> <!-- Assuming .co.in for regional focus -->
+    <meta property="og:title" content="Isidor | Smart Home Automation & Robotics">
+    <meta property="og:description" content="Elevate your lifestyle with Isidor's IoT-enabled automation. Intelligent home solutions and consumer robotics designed for the future.">
+    <meta property="og:image" content="logo-red.png">
+
+    <!-- Schema.org Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Isidor",
+      "image": "logo-red.png",
+      "description": "Innovative Consumer IoT and Home Automation company specializing in smart switches, motors, and consumer robotics.",
+      "telephone": "+919074576430",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      },
+      "url": "https://isidor.co.in/",
+      "knowsAbout": ["Home Automation", "IoT Enabled Switches", "Robotic Arms", "Smart Motors"]
+    }
+    </script>
+
+    <title>Isidor | Smart Home Automation & Consumer Robotics</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --main-red: #ff0000;
+            --secondary-text: rgba(0, 0, 0, 0.4);
+            --hover-black: #000000;
+            --font-family: 'Cascadia Mono', monospace;
+            --transition-speed: 1.2s;
+            --transition-easing: cubic-bezier(0.85, 0, 0.15, 1);
+            --hover-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            height: 100vh;
+            font-family: var(--font-family);
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Accessibility: Skip to main content (if needed for larger sites) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Loading Screen */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: transform var(--transition-speed) var(--transition-easing);
+            will-change: transform;
+        }
+
+        #loader img {
+            width: 97px;
+            height: 96px;
+            animation: spin 4s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        body.loaded #loader {
+            transform: translateY(-100%);
+        }
+
+        /* Main Content */
+        #main-content {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s var(--transition-easing);
+            transition-delay: 0.3s;
+            will-change: opacity, transform;
+        }
+
+        body.loaded #main-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .main-container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            transform: translateY(-20px);
+        }
+
+        .logo-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img {
+            display: block;
+            width: min(90vw, 440px); /* Fluid width that caps at 440px */
+            height: auto;
+            transition: opacity var(--hover-speed) ease;
+            cursor: pointer;
+        }
+
+        .logo-img:hover {
+            opacity: 0.8;
+        }
+
+        .subtitle {
+            font-size: clamp(0.55rem, 1.2vw, 0.75rem); /* Fluid font size */
+            color: var(--secondary-text);
+            text-transform: uppercase;
+            letter-spacing: 0.35rem;
+            font-weight: 600;
+            margin-top: -1.4rem;
+            display: flex;
+            gap: clamp(1rem, 5vw, 2.5rem); /* Fluid gap */
+            width: 100%;
+            justify-content: center;
+            cursor: default;
+        }
+
+        .subtitle span {
+            transition: color var(--hover-speed) ease;
+        }
+
+        .subtitle span:hover {
+            color: var(--hover-black);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            color: var(--secondary-text);
+            font-size: clamp(0.6rem, 1vw, 0.7rem);
+            letter-spacing: 0.2rem;
+            font-weight: 600;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .footer-link {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color var(--hover-speed) ease;
+            outline: none;
+        }
+
+        .footer-link:focus-visible {
+            color: var(--hover-black);
+            text-decoration: underline;
+        }
+
+        .footer-link:hover {
+            color: var(--hover-black);
+        }
+
+        .icon {
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        /* Responsive Design Pass */
+        @media (max-width: 600px) {
+            .main-container {
+                padding: 0 1.5rem;
+            }
+            .subtitle { 
+                margin-top: -0.8rem;
+                letter-spacing: 0.25rem;
+            }
+            footer { 
+                bottom: 2rem; 
+                left: 0;
+                width: 100%;
+                padding: 0 1.5rem;
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center;
+            }
+            .footer-item {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .footer-link {
+                padding: 0.5rem 0;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="loading">
+
+    <h1 class="sr-only">Isidor - Automation and Robotics</h1>
+
+    <div id="loader" role="status" aria-label="Loading Isidor Website">
+        <img src="spin.png" alt="" aria-hidden="true">
+    </div>
+
+    <main id="main-content">
+        <div class="main-container">
+            <header class="logo-wrapper">
+                <img src="logo-red.png" alt="Isidor Logo" class="logo-img">
+            </header>
+            <section class="subtitle" aria-label="Company Focus">
+                <span>AUTOMATION</span>
+                <span>ROBOTICS</span>
+            </section>
+        </div>
+
+        <footer>
+            <nav class="footer-item" aria-label="Contact Information">
+                <a href="tel:+919074576430" class="footer-link" aria-label="Call Andrewjos Sebastian at +91 90745 76430">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.88 12.88 0 0 0 .57 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.57A2 2 0 0 1 22 18.92Z"/>
+                    </svg>
+                </a>
+                <a href="mailto:andrewjossebastian@gmail.com" class="footer-link" aria-label="Email Andrewjos Sebastian at andrewjossebastian@gmail.com">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>
+                    </svg>
+                </a>
+                <a href="mailto:andrewjossebastian@gmail.com" class="footer-link">
+                    <span>ANDREWJOS SEBASTIAN</span>
+                </a>
+            </nav>
+        </footer>
+    </main>
+
+    <script>
+        // Optimization: Use DOMContentLoaded for initial logic, but wait for 'load' for the transition
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pre-calculate anything if needed
+        });
+
+        window.addEventListener('load', () => {
+            // 3-second deliberate delay for brand impact as requested
+            setTimeout(() => {
+                document.body.classList.remove('loading');
+                document.body.classList.add('loaded');
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
